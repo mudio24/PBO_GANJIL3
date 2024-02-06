@@ -1,0 +1,148 @@
+Microsoft Windows [Version 10.0.19045.3930]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Dio Nugraha>cd..
+
+C:\Users>cd..
+
+C:\>cd xampp
+
+C:\xampp>cd mysql
+
+C:\xampp\mysql>cd bin
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 99
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database obat;
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [(none)]> use obat
+Database changed
+MariaDB [obat]> create table dbobat(
+    -> id int primary key auto_increment,
+    -> kdobat varchar (10) unique,
+    -> nama varchar(100),
+    -> berat varchar(10),
+    -> bentuk varchar(25));
+Query OK, 0 rows affected (0.037 sec)
+
+MariaDB [obat]> show tables;
++----------------+
+| Tables_in_obat |
++----------------+
+| dbobat         |
++----------------+
+1 row in set (0.001 sec)
+
+MariaDB [obat]> insert into dbobat(kdobat,nama,berat,bentuk)values('001','paracetamot','20mg','tablet');
+Query OK, 1 row affected (0.004 sec)
+
+MariaDB [obat]> insert into dbobat(kdobat,nama,berat,bentuk)values('002','Bodrex','15mg','tablet');
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [obat]> insert into dbobat(kdobat,nama,berat,bentuk)values('003','3hegs','15mg','tablet');
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [obat]> insert into dbobat(kdobat,nama,berat,bentuk)values('004','Komix','10ml','sirup');
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [obat]> select * from dbobat;
++----+--------+-------------+-------+--------+
+| id | kdobat | nama        | berat | bentuk |
++----+--------+-------------+-------+--------+
+|  1 | 001    | paracetamot | 20mg  | tablet |
+|  2 | 002    | Bodrex      | 15mg  | tablet |
+|  3 | 003    | 3hegs       | 15mg  | tablet |
+|  4 | 004    | Komix       | 10ml  | sirup  |
++----+--------+-------------+-------+--------+
+4 rows in set (0.001 sec)
+
+MariaDB [obat]> update dbobat set kdobat='001'where id='1';
+Query OK, 0 rows affected (0.001 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+MariaDB [obat]> select * from dbobat;
++----+--------+-------------+-------+--------+
+| id | kdobat | nama        | berat | bentuk |
++----+--------+-------------+-------+--------+
+|  1 | 001    | paracetamot | 20mg  | tablet |
+|  2 | 002    | Bodrex      | 15mg  | tablet |
+|  3 | 003    | 3hegs       | 15mg  | tablet |
+|  4 | 004    | Komix       | 10ml  | sirup  |
++----+--------+-------------+-------+--------+
+4 rows in set (0.001 sec)
+
+MariaDB [obat]> delete from dbobat where id='3';
+Query OK, 1 row affected (0.002 sec)
+
+MariaDB [obat]> show tables;
++----------------+
+| Tables_in_obat |
++----------------+
+| dbobat         |
++----------------+
+1 row in set (0.001 sec)
+
+MariaDB [obat]> select * from dbobat;
++----+--------+-------------+-------+--------+
+| id | kdobat | nama        | berat | bentuk |
++----+--------+-------------+-------+--------+
+|  1 | 001    | paracetamot | 20mg  | tablet |
+|  2 | 002    | Bodrex      | 15mg  | tablet |
+|  4 | 004    | Komix       | 10ml  | sirup  |
++----+--------+-------------+-------+--------+
+3 rows in set (0.001 sec)
+
+MariaDB [obat]> insert into dbobat(kdobat,nama,berat,bentuk)values('003','3hegs','15mg','tablet');
+Query OK, 1 row affected (0.003 sec)
+
+MariaDB [obat]> select * from dbobat;
++----+--------+-------------+-------+--------+
+| id | kdobat | nama        | berat | bentuk |
++----+--------+-------------+-------+--------+
+|  1 | 001    | paracetamot | 20mg  | tablet |
+|  2 | 002    | Bodrex      | 15mg  | tablet |
+|  4 | 004    | Komix       | 10ml  | sirup  |
+|  5 | 003    | 3hegs       | 15mg  | tablet |
++----+--------+-------------+-------+--------+
+4 rows in set (0.001 sec)
+
+MariaDB [obat]> update dbobat set kdobat='010'where id='5';
+Query OK, 1 row affected (0.002 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [obat]> select * from dbobat;
++----+--------+-------------+-------+--------+
+| id | kdobat | nama        | berat | bentuk |
++----+--------+-------------+-------+--------+
+|  1 | 001    | paracetamot | 20mg  | tablet |
+|  2 | 002    | Bodrex      | 15mg  | tablet |
+|  4 | 004    | Komix       | 10ml  | sirup  |
+|  5 | 010    | 3hegs       | 15mg  | tablet |
++----+--------+-------------+-------+--------+
+4 rows in set (0.001 sec)
+
+MariaDB [obat]> update dbobat set nama='ultraflu'where id='5';
+Query OK, 1 row affected (0.003 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [obat]> select * from dbobat;
++----+--------+-------------+-------+--------+
+| id | kdobat | nama        | berat | bentuk |
++----+--------+-------------+-------+--------+
+|  1 | 001    | paracetamot | 20mg  | tablet |
+|  2 | 002    | Bodrex      | 15mg  | tablet |
+|  4 | 004    | Komix       | 10ml  | sirup  |
+|  5 | 010    | ultraflu    | 15mg  | tablet |
++----+--------+-------------+-------+--------+
+4 rows in set (0.001 sec)
+
+MariaDB [obat]>
